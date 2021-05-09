@@ -54,3 +54,11 @@ body, html {
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
+
+.output {
+    font-size: 3rem;
+    font-family: digital;
+    color: var(--light-color);
+    text-align: right;
+    line-height: 3.5rem;
+}
