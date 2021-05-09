@@ -88,7 +88,7 @@ body, html {
     z-index: 3;
 }
 
-button.operator {
+button.operators {
     background-color: var(--light-grey);
 }
 
