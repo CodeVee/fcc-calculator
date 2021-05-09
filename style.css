@@ -6,6 +6,7 @@
     --red-color: rgb(172, 57, 57);
     --blue-color: rgb(0, 68, 102);
     --border-color: #47476b;
+    --light-grey: rgb(102, 102, 102);
 }
 
 @import 'https://fonts.googleapis.com/css?family=Share+Tech+Mono';
@@ -41,6 +42,8 @@ body, html {
     background-color: black;
     padding: .5rem;
     border: .2rem solid var(--border-color);
+    display: flex;
+    flex-direction: column;
 }
 
 .input {
@@ -61,4 +64,26 @@ body, html {
     color: var(--light-color);
     text-align: right;
     line-height: 3.5rem;
+}
+
+.buttons {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.buttons button {
+    background-color: var(--btn-color);
+    border: none;
+    font-size: 2rem;
+    cursor: default;
+    outline: .1rem solid black;
+    color: var(--light-color);
+}
+
+.buttons button:hover {
+    color: black;
+    outline: 0.05em solid grey;
+    z-index: 3;
 }
