@@ -5,6 +5,7 @@
     --grey-color: #f0f0f0;
     --red-color: rgb(172, 57, 57);
     --blue-color: rgb(0, 68, 102);
+    --border-color: #47476b;
 }
   
 * {
@@ -25,4 +26,12 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.calculator {
+    width: 34rem;
+    height: 40rem;
+    background-color: black;
+    padding: .5rem;
+    border: .2rem solid var(--border-color);
 }
