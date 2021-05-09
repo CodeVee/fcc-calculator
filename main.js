@@ -25,3 +25,8 @@ document.getElementById('clear').addEventListener('click', () => {
     input.innerHTML = '';
     output.innerHTML = '0'
 })
+
+document.getElementById('equals').addEventListener('click', () => {
+    input.innerHTML += '=500';
+    output.innerHTML = '500'
+})
