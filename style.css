@@ -18,3 +18,11 @@ body, html {
     font-size: 10px;
     line-height: 1.5;
 }
+
+.wrapper {
+    background-color: var(--bg-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
