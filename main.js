@@ -1,16 +1,73 @@
 const input = document.getElementById('input');
 const output = document.getElementById('output');
 const numberBtns = document.getElementsByClassName('numbers');
-const operatorBtns = document.getElementsByClassName('operators')
+const operatorBtns = document.getElementsByClassName('operators');
+
+let firstValue = '';
+let secondValue = '';
+let operator = '';
+let result = '';
+let calculated = false;
+
+const calculateValue = () => {
+    const firstNumber = parseFloat(firstValue);
+    const secondNumber = parseFloat(secondValue);
+    calculated = true;
+    switch (operator) {
+        case '+':
+            return firstNumber + secondNumber;
+        case '-':
+            return firstNumber - secondNumber;
+        case '*':
+            return firstNumber * secondNumber;
+        case '/':
+            return firstNumber / secondNumber;
+        default:
+            return 0;
+    }
+}
 
 const processNumber = (e) => {
     const value = e.target.value;
-    input.innerHTML += value;
+
+    if (operator) {
+        const number = parseFloat(secondValue + value);
+        secondValue = number.toString();
+        output.innerHTML = secondValue;
+        input.innerHTML += operator;
+    } else {
+        const number = parseFloat(firstValue + value);
+        firstValue = number.toString();
+        output.innerHTML = firstValue;
+        input.innerHTML = '';
+    }
 };
 
 const processOperator = (e) => {
     const value = e.target.value;
     output.innerHTML = value;
+
+    if (calculated) {
+        firstValue = result;
+        input.innerHTML = result;
+        operator = value;
+        calculated = false;
+        return;
+    }
+
+    if (firstValue && secondValue && operator) {
+        const result = calculateValue();
+        firstValue = result.toString();
+        operator = value;
+        input.innerHTML = firstValue;
+        return;
+    }
+
+    if (firstValue) {
+        operator = value;
+        input.innerHTML = firstValue;
+        return;
+    }
 }
 
 Array.from(numberBtns).forEach(btn => {
@@ -24,9 +81,18 @@ Array.from(operatorBtns).forEach(btn => {
 document.getElementById('clear').addEventListener('click', () => {
     input.innerHTML = '';
     output.innerHTML = '0'
+    firstValue = '';
+    secondValue = '';
+    operator = '';
+    result = '';
 })
 
 document.getElementById('equals').addEventListener('click', () => {
-    input.innerHTML += '=500';
-    output.innerHTML = '500'
+    const calcResult = calculateValue();
+    result = calcResult.toString();
+    output.innerHTML = result;
+    input.innerHTML = input.innerHTML + secondValue + '=' + result;
+    firstValue = '';
+    secondValue = '';
+    operator = '';
 })
