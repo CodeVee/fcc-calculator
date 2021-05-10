@@ -23,7 +23,7 @@ const calculateValue = () => {
         case '/':
             return firstNumber / secondNumber;
         default:
-            return 0;
+            return firstNumber;
     }
 }
 
@@ -85,13 +85,14 @@ document.getElementById('clear').addEventListener('click', () => {
     secondValue = '';
     operator = '';
     result = '';
+    calculated = false;
 })
 
 document.getElementById('equals').addEventListener('click', () => {
     const calcResult = calculateValue();
     result = calcResult.toString();
     output.innerHTML = result;
-    input.innerHTML = input.innerHTML + secondValue + '=' + result;
+    input.innerHTML = firstValue + operator + secondValue + '=' + result;
     firstValue = '';
     secondValue = '';
     operator = '';
