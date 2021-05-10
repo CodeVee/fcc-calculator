@@ -58,7 +58,7 @@ body, html {
     word-wrap: break-word;
 }
 
-#output {
+#display {
     font-size: 3rem;
     font-family: digital;
     color: var(--light-color);

@@ -1,5 +1,5 @@
 const input = document.getElementById('input');
-const output = document.getElementById('output');
+const output = document.getElementById('display');
 const numberBtns = document.getElementsByClassName('numbers');
 const operatorBtns = document.getElementsByClassName('operators');
 
@@ -49,6 +49,7 @@ const processOperator = (e) => {
 
     if (calculated) {
         firstValue = result;
+        secondValue = '';
         input.innerHTML = result;
         operator = value;
         calculated = false;
@@ -58,6 +59,7 @@ const processOperator = (e) => {
     if (firstValue && secondValue && operator) {
         const result = calculateValue();
         firstValue = result.toString();
+        secondValue = '';
         operator = value;
         input.innerHTML = firstValue;
         return;
