@@ -31,8 +31,11 @@ const processNumber = (e) => {
     const value = e.target.value;
 
     if (operator) {
+        console.log('before', secondValue);
         const number = parseFloat(secondValue + value);
         secondValue = number.toString();
+        console.log('after', secondValue);
+        console.log(firstValue, operator, secondValue, calculated);
         output.innerHTML = secondValue;
         input.innerHTML += operator;
     } else {
@@ -51,8 +54,8 @@ const processOperator = (e) => {
         firstValue = result;
         secondValue = '';
         input.innerHTML = result;
-        operator = value;
         calculated = false;
+        operator = value;
         return;
     }
 
@@ -60,14 +63,15 @@ const processOperator = (e) => {
         const result = calculateValue();
         firstValue = result.toString();
         secondValue = '';
-        operator = value;
         input.innerHTML = firstValue;
+        calculated = false;
+        operator = value;
         return;
     }
 
     if (firstValue) {
-        operator = value;
         input.innerHTML = firstValue;
+        operator = value;
         return;
     }
 }
