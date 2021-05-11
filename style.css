@@ -23,7 +23,7 @@
 }
   
 body, html {
-    font-family: "Lato", sans-serif;
+    font-family: digital;
     font-size: 10px;
     line-height: 1.5;
 }
@@ -48,7 +48,6 @@ body, html {
 
 #input {
     min-height: 2rem;
-    font-family: digital;
     font-size: 2rem;
     color: orange;
     text-align: right;
@@ -60,7 +59,6 @@ body, html {
 
 #display {
     font-size: 3rem;
-    font-family: digital;
     color: var(--light-color);
     text-align: right;
     line-height: 3.5rem;
@@ -80,11 +78,12 @@ body, html {
     cursor: default;
     outline: .1rem solid black;
     color: var(--light-color);
+    font-family: digital;
 }
 
 .buttons button:hover {
     color: black;
-    outline: 0.05em solid grey;
+    outline: 0.05rem solid grey;
     z-index: 3;
 }
 
