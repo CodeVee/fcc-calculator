@@ -34,7 +34,7 @@ const processNumber = (e) => {
         if (!secondValue) {
             input.innerHTML += operator;
         }
-        
+
         if (value === '.' && !secondValue.includes(value)) {
             if (secondValue) {
                 secondValue += value;
@@ -97,7 +97,7 @@ const processOperator = (e) => {
         return;
     }
 
-    if (firstValue && secondValue && operator) {
+    if (firstValue && secondValue && secondValue !== '-' && operator) {
         const result = calculateValue();
         firstValue = result.toString();
         secondValue = '';
@@ -107,9 +107,17 @@ const processOperator = (e) => {
         return;
     }
 
+    if (operator && value === '-' && secondValue !== value) {
+        input.innerHTML += operator;
+        secondValue = value;
+        output.innerHTML = secondValue;
+        return;
+    } 
+
     if (firstValue) {
         input.innerHTML = firstValue;
         operator = value;
+        secondValue = '';
         return;
     }
 }
