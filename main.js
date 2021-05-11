@@ -31,18 +31,56 @@ const processNumber = (e) => {
     const value = e.target.value;
 
     if (operator) {
-        console.log('before', secondValue);
-        const number = parseFloat(secondValue + value);
-        secondValue = number.toString();
-        console.log('after', secondValue);
-        console.log(firstValue, operator, secondValue, calculated);
-        output.innerHTML = secondValue;
-        input.innerHTML += operator;
+        if (!secondValue) {
+            input.innerHTML += operator;
+        }
+        
+        if (value === '.' && !secondValue.includes(value)) {
+            if (secondValue) {
+                secondValue += value;
+            } else {
+                secondValue = '0.'
+            }
+        }
+
+        if (value !== '.') {
+            let num = '';
+            if (secondValue.includes('.')) {
+                num = secondValue + value;
+            } else {
+                const number = parseFloat(secondValue + value);
+                num = number.toString();
+            }
+            
+            secondValue = num;
+            
+        }
+        output.innerHTML = secondValue;  
     } else {
-        const number = parseFloat(firstValue + value);
-        firstValue = number.toString();
+        if (value === '.' && !firstValue.includes(value)) {
+            if (firstValue) {
+                firstValue += value;
+            } else {
+                firstValue = '0.'
+            }
+        }
+
+        if (value !== '.') {
+            let num = '';
+            if (firstValue.includes('.')) {
+                num = firstValue + value;
+            } else {
+                const number = parseFloat(firstValue + value);
+                num = number.toString();
+            }
+            
+            firstValue = num;
+            
+        }
+
         output.innerHTML = firstValue;
         input.innerHTML = '';
+        
     }
 };
 
